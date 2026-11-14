@@ -1,0 +1,86 @@
+# Cinemora Production: Cloudflare Worker site
+
+```
+cinemora/
+├─ wrangler.toml          Worker config: custom domains, static assets, workers.dev disabled
+├─ package.json           npm run dev / npm run deploy
+├─ .dev.vars              local-only flag (wrangler dev reads it; never deployed)
+├─ src/
+│  ├─ index.js            Worker: redirects, per-page SEO, robots/sitemap, security headers, caching
+│  └─ routes.js           Every page's URL, <title>, description, sitemap priority (edit here)
+└─ public/                Static files served by the Worker
+   ├─ index.html          The site (all content pre-rendered, JSON-LD in <head>)
+   ├─ site.webmanifest, favicon.ico, apple-touch-icon.png
+   └─ assets/             logo.png, founder.jpg, og-image.jpg (1200×630 share image), icons
+```
+
+## Everyday edits
+- **Text or prices:** edit `public/index.html`. If you change a price, also update the matching
+  `"minPrice"` / `"lowPrice"` numbers in the JSON-LD block in the `<head>`, so Google sees the same price.
+- **A page's Google title or description:** edit `src/routes.js`.
+- **After any content change:** set `SITE_LASTMOD` in `wrangler.toml` to today's date, then deploy.
+- **Replacing an image:** keep the same file name. Browsers cache images for up to 7 days.
+
+## Run locally
+```bash
+npm install
+npm run dev        # http://localhost:8787
+```
+
+## Deployment checklist
+
+### 1. Put the domain on Cloudflare
+1. Create a free account at dash.cloudflare.com, then go to **Add a domain** and enter `cinemoraproduction.com`. Choose the Free plan.
+2. Cloudflare shows you two nameservers. At your domain registrar, replace the existing nameservers with those two.
+   Wait until Cloudflare emails you that the domain is **Active** (usually under an hour; it can take up to 24 hours).
+3. Go to **DNS → Records** and delete any existing `A`, `AAAA` or `CNAME` records for `cinemoraproduction.com` and `www`.
+   Custom Domains can't be attached while another record exists for the same name.
+   **Keep any `MX` and `TXT` records.** They handle email and domain verification.
+4. Go to **SSL/TLS → Overview** and set the mode to **Full (strict)**. Then go to **SSL/TLS → Edge Certificates** and turn on **Always Use HTTPS**.
+   The Worker also redirects HTTP to HTTPS, so this is a second layer.
+
+### 2. Deploy
+**Using the Wrangler CLI (recommended):**
+```bash
+npm install
+npx wrangler login          # opens the browser once to authorise
+npm run deploy              # = wrangler deploy
+```
+`wrangler deploy` uploads the Worker and the `public/` folder. It also attaches both
+`cinemoraproduction.com` and `www.cinemoraproduction.com` as **Custom Domains**, so Cloudflare
+creates the DNS records and SSL certificates for you. Certificates take a few minutes to issue.
+
+**Using the Dashboard instead:** go to **Workers & Pages → Create → Import a repository**. Push this folder to GitHub, select the repository and deploy;
+the dashboard reads `wrangler.toml`. Check **Settings → Domains & Routes** afterwards. Both domains should be listed,
+and `workers.dev` should show as disabled.
+
+**Check that it works:**
+```bash
+curl -sI http://cinemoraproduction.com/prices
+```
+You should get a `301` to `https://cinemoraproduction.com/prices`. Run the same check for `https://www.cinemoraproduction.com/`. Then open
+`https://cinemoraproduction.com/robots.txt` and `/sitemap.xml`. Finally, test the security headers at securityheaders.com.
+
+**HSTS preload (optional, hard to undo):** the `preload` header is already sent. Submit at hstspreload.org
+only after you are sure that **every subdomain** will always use HTTPS. Getting removed from the preload list takes months.
+
+### 3. Google Search Console
+1. Go to search.google.com/search-console → **Add property** → **Domain** → `cinemoraproduction.com`.
+2. Google gives you a `TXT` record. In Cloudflare, go to **DNS → Records → Add record**, choose type `TXT`, enter `@` as the name and paste the value. Then click **Verify**.
+3. Go to **Sitemaps** → enter `sitemap.xml` → **Submit**.
+4. Go to **URL Inspection** → check each of `/`, `/prices`, `/contact`, `/location` and `/founder`, and click **Request indexing** for each.
+5. Test the homepage at search.google.com/test/rich-results. It should detect *Local business*, *Organization* and *Breadcrumbs* (on inner pages).
+6. Share a link in WhatsApp or Facebook to check the preview card. developers.facebook.com/tools/debug refreshes Facebook's cache.
+
+### 4. Google Business Profile (Maps "3-pack")
+1. Go to business.google.com → **Add business** → name **Cinemora Production** (exactly that: no keywords added to the name, because Google suspends profiles that do this).
+2. **Primary category:** *Videographer*. **Additional categories:** *Wedding videographer*, *Video production service*, *Photographer*, *Wedding photographer*.
+3. **Location:** the business runs from a home, so choose **"I deliver goods and services to my customers"**.
+   Add service areas (Balapitiya, Ambalangoda, Galle, Hikkaduwa, Bentota, Kalutara, Colombo and so on),
+   and **hide the street address** if you don't want customers visiting unannounced. Verify by the method Google offers (usually a video or postcard).
+4. **Keep your NAP identical everywhere** (name, address, phone): use *Cinemora Production*, *+94 70 377 0730* and the same address wording on the website, the Business Profile, Facebook and Instagram.
+5. **Website:** `https://cinemoraproduction.com/`. **Booking link:** `https://cinemoraproduction.com/contact`.
+6. Add **Services** with the same starting prices as the website, plus 10 or more real photos and short video clips. Post an update every week or two.
+7. **Reviews matter most for ranking in the 3-pack.** After each shoot, send clients your review link (Business Profile → *Ask for reviews*), and reply to every review.
+8. When the profile is live, open it in Google Maps, copy its share link, and add it to the `sameAs` list in the JSON-LD in `public/index.html`.
+   Also copy the pin's coordinates and add `"geo": {"@type":"GeoCoordinates","latitude":…,"longitude":…}`, plus your `postalCode`, to the business entry. Then redeploy.

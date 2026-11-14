@@ -1,4 +1,4 @@
-name = "cinemora-production"
+name = "cinemora"
 main = "src/index.js"
 compatibility_date = "2026-11-01"
 
@@ -9,8 +9,8 @@ preview_urls = false
 # Cloudflare creates the DNS records and SSL certificates for these automatically.
 # The Worker 301-redirects www -> apex, so both must point at it.
 routes = [
-  { pattern = "cinemoraproduction.com", custom_domain = true },
-  { pattern = "www.cinemoraproduction.com", custom_domain = true },
+  { pattern = "cinemoraproduction.com", zone_name = "cinemoraproduction.com", custom_domain = true },
+  { pattern = "www.cinemoraproduction.com", zone_name = "cinemoraproduction.com", custom_domain = true },
 ]
 
 [assets]

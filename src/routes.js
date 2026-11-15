@@ -40,7 +40,7 @@ export const ROUTES = {
     path: '/location',
     title: 'Videographer in Balapitiya, Sri Lanka | Cinemora Production Location',
     description:
-      'Cinemora Production is based in Pathegama, Balapitiya, near the police station, and films weddings, events and commercials across Sri Lanka. Call or message before visiting.',
+      'Cinemora Production is based in Pathegama, Balapitiya, near Ahungalla Police Station, and films weddings, events and commercials across Sri Lanka. Call or message before visiting.',
     priority: '0.8',
     changefreq: 'yearly',
     crumb: 'Location',

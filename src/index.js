@@ -9,6 +9,7 @@
  *  - Cache-Control tuned per content type
  */
 import { SITE, ROUTES, PATH_TO_ROUTE } from './routes.js';
+import { buildSitemap } from './sitemap.js';
 
 const ASSET_CACHE = 'public, max-age=604800, stale-while-revalidate=86400'; // 7 days
 const HTML_CACHE = 'private, no-cache'; // always revalidated; served from the edge in ms
@@ -55,7 +56,12 @@ async function handle(request, env, url, canonicalHost, local, preview) {
 
     // 4) Crawler endpoints.
     if (path === '/robots.txt') return text(preview ? 'User-agent: *\nDisallow: /\n' : robots(), 'text/plain; charset=utf-8', request, local);
-    if (path === '/sitemap.xml') return text(sitemap(env.SITE_LASTMOD), 'application/xml; charset=utf-8', request, local);
+    if (path === '/sitemap.xml') {
+      // Serve the generated public/sitemap.xml; build it on the fly if the file is missing.
+      const file = await env.ASSETS.fetch(new Request(new URL('/sitemap.xml', request.url)));
+      const body = file.ok ? await file.text() : buildSitemap(env.SITE_LASTMOD);
+      return text(body, 'application/xml; charset=utf-8', request, local);
+    }
 
     // 5) Pages.
     const routeKey = PATH_TO_ROUTE[path];
@@ -163,19 +169,6 @@ function robots() {
   return `User-agent: *\nAllow: /\n\nSitemap: ${SITE.origin}/sitemap.xml\n`;
 }
 
-function sitemap(lastmod) {
-  const date = /^\d{4}-\d{2}-\d{2}$/.test(lastmod || '') ? lastmod : new Date().toISOString().slice(0, 10);
-  const urls = Object.entries(ROUTES).map(([key, r]) => {
-    const image = key === 'founder'
-      ? `\n    <image:image><image:loc>${SITE.origin}/assets/founder.jpg</image:loc></image:image>`
-      : key === 'home'
-        ? `\n    <image:image><image:loc>${SITE.origin}/assets/og-image.jpg</image:loc></image:image>`
-        : '';
-    return `  <url>\n    <loc>${xml(SITE.origin + r.path)}</loc>\n    <lastmod>${date}</lastmod>\n    <changefreq>${r.changefreq}</changefreq>\n    <priority>${r.priority}</priority>${image}\n  </url>`;
-  });
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.join('\n')}\n</urlset>\n`;
-}
-
 function text(body, type, request, local) {
   return secure(new Response(request.method === 'HEAD' ? null : body, {
     headers: {
@@ -238,8 +231,4 @@ function makeNonce() {
 
 function safeJson(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
-}
-
-function xml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }

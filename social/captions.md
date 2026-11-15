@@ -40,6 +40,8 @@ Cinemora Production is now online 🎬
 See our packages, prices and films, and request a quotation:
 cinemoraproduction.com
 
+Powered by getminutepage.com (also on the image and in the website footer)
+
 ## Before you post
 
 - Make sure https://cinemoraproduction.com opens for you first.

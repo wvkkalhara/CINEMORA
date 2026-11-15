@@ -1076,6 +1076,26 @@ footer li a,footer address a{color:var(--fg);opacity:.8;transition:opacity .2s}f
 .by a{color:var(--fg);border-bottom:1px solid var(--acc)}
 @media(max-width:900px){.fgrid{grid-template-columns:1fr 1fr}.fb{grid-column:1/-1}}
 @media(max-width:520px){.fgrid{grid-template-columns:1fr}footer{padding-top:44px}.fbot{flex-direction:column}}
+#mbtn{display:none}
+@media(max-width:900px){
+header{flex-wrap:nowrap;align-items:center;gap:12px;padding:9px 16px;padding-top:calc(9px + env(safe-area-inset-top,0px));background:rgba(10,5,7,.8);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid rgba(194,41,77,.28);box-shadow:0 8px 30px rgba(0,0,0,.35)}
+.logo{gap:9px;min-width:0}.logo img.mark{height:38px;width:38px;box-shadow:0 0 0 1px rgba(224,98,127,.45),0 0 16px rgba(224,98,127,.3)}.logo img:not(.mark){height:30px;width:auto;max-width:100%}
+#mbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(26,10,16,.8);cursor:pointer;transition:.25s}
+#mbtn span{display:block;width:18px;height:2px;border-radius:2px;background:var(--fg);transition:transform .3s,opacity .2s}
+#mbtn[aria-expanded="true"]{background:var(--acc);border-color:var(--acc)}
+#mbtn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+#mbtn[aria-expanded="true"] span:nth-child(2){opacity:0}
+#mbtn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mbtn:focus-visible{outline:2px solid var(--acc2);outline-offset:3px}
+nav#nav{position:absolute;top:100%;left:0;right:0;width:auto;flex-direction:column;flex-wrap:nowrap;gap:0;overflow:hidden;padding:6px 16px 14px;-webkit-mask:none;mask:none;background:rgba(10,5,7,.97);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);box-shadow:0 24px 40px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .25s,visibility 0s .25s}
+nav#nav.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s}
+nav#nav a{display:flex;align-items:center;justify-content:space-between;border:0;border-bottom:1px solid rgba(194,41,77,.2);border-radius:0;background:none;padding:17px 4px;font:400 1rem var(--b);letter-spacing:.06em}
+nav#nav a:last-child{border-bottom:0}
+nav#nav a:after{content:"›";color:var(--acc2);font-size:1.3rem}
+nav#nav a.on{background:none;color:var(--acc2);font-weight:500}
+nav#nav a:hover{border-color:rgba(194,41,77,.2)}
+section{padding-top:calc(96px + env(safe-area-inset-top,0px))}
+}
 #bar{display:none}
 @media(max-width:800px){
 #wa{display:none}
@@ -1100,6 +1120,7 @@ footer{padding-bottom:110px}
 <canvas id="bg" aria-hidden="true"></canvas><div id="glow" aria-hidden="true"></div>
 <header>
   <a class="logo" href="/" data-t="home" aria-label="Cinemora Production home"><img class="mark" src="/assets/logo-mark.png" alt="" width="192" height="192" decoding="async"><img src="/assets/logo.png" alt="Cinemora Production" width="640" height="119" fetchpriority="high" decoding="async"></a>
+  <button type="button" id="mbtn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   <nav id="nav" aria-label="Main">
     <a href="/" data-t="home" class="on" aria-current="page">Home</a>
     <a href="/prices" data-t="prices">Pricing &amp; Packages</a>
@@ -1294,7 +1315,7 @@ footer{padding-bottom:110px}
     <div><h4>Contact</h4><address><a href="tel:+94703770730">070 377 0730</a><br><a href="tel:+94743500507">074 350 0507</a><br><a href="mailto:cinemoraproductionlk@gmail.com">cinemoraproductionlk@gmail.com</a><br><a href="https://wa.me/message/E7ERP73DCK3QJ1" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></address></div>
     <div><h4>Find us</h4><address>Near Ahungalla Police Station,<br>Pathegama, Balapitiya,<br>Sri Lanka 80550<br><a href="/location" data-go="location">Directions &amp; map</a></address></div>
   </div>
-  <div class="fbot"><span>© 2026 Cinemora Production. All rights reserved.</span><a href="/privacy" data-go="privacy">Privacy Policy</a><span class="by">Website by <a href="https://getminutepage.com" target="_blank" rel="noopener">Minutepage</a></span></div>
+  <div class="fbot"><span>© 2026 Cinemora Production. All rights reserved.</span><a href="/privacy" data-go="privacy">Privacy Policy</a><span class="by">Powered by <a href="https://getminutepage.com" target="_blank" rel="noopener">Minutepage</a></span></div>
 </footer>
 <div id="qm" role="dialog" aria-modal="true" aria-labelledby="qt" hidden><div class="qbox"><button type="button" class="qx" id="qx" aria-label="Close">&times;</button>
 <h3 id="qt">Request a Quotation</h3><p class="sub" style="margin:8px 0 18px;font-size:.85rem">Fill in your details. Your enquiry opens in WhatsApp or your email app, ready to send to Cinemora Production. We reply personally.</p>
@@ -1322,6 +1343,13 @@ footer{padding-bottom:110px}
   function routeOf(p){p=(p||'/').replace(/\/+$/,'')||'/';for(var k in PATHS)if(PATHS[k]===p)return k;return 'home'}
   function setMeta(sel,attr,val){var el=document.querySelector(sel);if(el&&val)el.setAttribute(attr,val)}
   var nav=document.getElementById('nav');
+  var mbtn=document.getElementById('mbtn');
+  function setMenu(o){nav.classList.toggle('open',o);mbtn.setAttribute('aria-expanded',o?'true':'false');mbtn.setAttribute('aria-label',o?'Close menu':'Open menu')}
+  mbtn.addEventListener('click',function(e){e.stopPropagation();setMenu(!nav.classList.contains('open'))});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!e.target.closest('header'))setMenu(false)});
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);mbtn.focus()}});
+  addEventListener('resize',function(){if(innerWidth>900)setMenu(false)});
   function show(t,push){
     if(!PATHS.hasOwnProperty(t))t='home';
     document.querySelectorAll('main>section').forEach(function(s){s.classList.toggle('on',s.id===t)});

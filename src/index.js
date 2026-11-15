@@ -20,9 +20,22 @@ export default {
     const canonicalHost = env.CANONICAL_HOST || 'cinemoraproduction.com';
     // LOCAL_DEV comes from .dev.vars, which only `wrangler dev` reads (it rewrites the URL to the production host).
     const local = String(env.LOCAL_DEV) === 'true' || isLocal(url.hostname);
+    // Any other hostname (e.g. cinemora.<account>.workers.dev) is a temporary preview:
+    // it is served normally but marked noindex so Google never indexes it.
+    const preview = !local && url.hostname !== canonicalHost && url.hostname !== `www.${canonicalHost}`;
 
-    // 1) Canonical origin: http -> https, www/workers.dev/anything else -> apex.
-    if (!local && (url.protocol !== 'https:' || url.hostname !== canonicalHost)) {
+    const res = await handle(request, env, url, canonicalHost, local, preview);
+    if (preview) res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+    return res;
+  },
+};
+
+async function handle(request, env, url, canonicalHost, local, preview) {
+    // 1) Canonical origin: http -> https, www -> apex. Preview hosts only get http -> https.
+    if (preview && url.protocol !== 'https:') {
+      return redirect(`https://${url.host}${url.pathname}${url.search}`, local);
+    }
+    if (!local && !preview && (url.protocol !== 'https:' || url.hostname !== canonicalHost)) {
       return redirect(`https://${canonicalHost}${url.pathname}${url.search}`, local);
     }
 
@@ -41,7 +54,7 @@ export default {
     }
 
     // 4) Crawler endpoints.
-    if (path === '/robots.txt') return text(robots(), 'text/plain; charset=utf-8', request, local);
+    if (path === '/robots.txt') return text(preview ? 'User-agent: *\nDisallow: /\n' : robots(), 'text/plain; charset=utf-8', request, local);
     if (path === '/sitemap.xml') return text(sitemap(env.SITE_LASTMOD), 'application/xml; charset=utf-8', request, local);
 
     // 5) Pages.
@@ -54,8 +67,7 @@ export default {
     const out = new Response(res.body, res);
     if (res.ok) out.headers.set('Cache-Control', ASSET_CACHE);
     return secure(out, local);
-  },
-};
+}
 
 // ---------------------------------------------------------------- pages
 

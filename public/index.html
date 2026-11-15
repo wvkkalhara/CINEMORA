@@ -39,6 +39,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&amp;family=Outfit:wght@300;400;500&amp;family=Unbounded:wght@500;800&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@800&amp;family=Noto+Serif+Tamil:wght@800&amp;display=swap&amp;text=%E0%B6%86%E0%B6%BA%E0%B7%94%E0%B6%B6%E0%B7%9D%E0%B7%80%E0%B6%B1%E0%B7%8A%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D">
 
+<script type="application/ld+json" id="faq-ld">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I book Cinemora Production?", "acceptedAnswer": {"@type": "Answer", "text": "Call 070 377 0730 or 074 350 0507, message us on WhatsApp, or send a quotation request from this website. A 40% advance payment confirms your booking."}}, {"@type": "Question", "name": "Are the prices fixed?", "acceptedAnswer": {"@type": "Answer", "text": "The prices shown are starting prices in Sri Lankan Rupees. The final price depends on your project requirements and production complexity, so we are happy to prepare a custom quotation."}}, {"@type": "Question", "name": "Do you work outside Balapitiya?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We film weddings, events and commercials across Sri Lanka. Transportation and accommodation expenses may apply depending on the location."}}, {"@type": "Question", "name": "Do you offer both photography and videography?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Wedding packages are cinematic videography. Event, corporate, product and portrait packages include photography, videography or both, as listed in each package."}}, {"@type": "Question", "name": "Can you film with a drone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Drone footage is included in the Luxury wedding package and can be added to other bookings from Rs. 15,000. Drone coverage depends on weather conditions and location permissions."}}, {"@type": "Question", "name": "How will I receive my film?", "acceptedAnswer": {"@type": "Answer", "text": "Your finished film is delivered digitally. The remaining payment is completed according to the agreed schedule before final delivery."}}, {"@type": "Question", "name": "What if I need more hours or changes?", "acceptedAnswer": {"@type": "Answer", "text": "Additional shooting hours are charged separately, and revisions are limited according to the agreed package. Tell us what you need up front and we will recommend the right package."}}, {"@type": "Question", "name": "Can I visit you?", "acceptedAnswer": {"@type": "Answer", "text": "Please call or message before visiting. We are based in Pathegama, Balapitiya, near Ahungalla Police Station."}}]}</script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -1048,6 +1049,33 @@ img{max-width:100%}
 .wi small{font-size:.72rem;color:#d9c8cc}
 @media(max-width:600px){.wi b{font-size:.85rem}.wp{width:44px;height:44px;margin:-22px 0 0 -22px}}
 .proof{margin-top:18px;color:var(--mut);font-size:.85rem}.proof b{color:var(--fg)}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--acc);color:#fff;padding:10px 18px;border-radius:24px;text-decoration:none;font:500 .85rem var(--b)}.skip:focus{left:10px}
+main:focus{outline:none}
+#intro .im{width:120px;height:120px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 22px rgba(224,98,127,.55))}
+.stp{font:800 2.2rem var(--h);color:var(--acc2);line-height:1}
+.faqs{display:grid;gap:10px;max-width:860px}
+.fq{padding:0}.fq summary{list-style:none;cursor:pointer;padding:18px 54px 18px 22px;font:500 1rem var(--b);position:relative}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary:after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--acc2);transition:transform .25s}
+.fq[open] summary:after{transform:translateY(-50%) rotate(45deg)}
+.fq summary:focus-visible{outline:2px solid var(--acc2);outline-offset:-2px;border-radius:14px}
+.fq p{padding:0 22px 20px;color:var(--mut);line-height:1.7;font-size:.95rem}
+.legal{max-width:820px;margin-top:24px}.legal h3{margin:22px 0 6px;font-size:1.05rem}.legal p{color:var(--mut);line-height:1.75;font-size:.95rem}
+footer{text-align:left;font-size:.85rem;padding:60px 5vw 28px;margin-top:40px;border-top:1px solid var(--line);background:linear-gradient(#0a050700,#0a0507cc 30%)}
+footer a{border-bottom:0}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1.2fr;gap:36px;max-width:1200px;margin:0 auto}
+.fb p{margin:14px 0 18px;max-width:34ch;line-height:1.7}
+.flogo{display:flex!important;align-items:center;gap:12px}.flogo img:first-child{width:52px;height:52px;border-radius:50%}.flogo img:last-child{height:32px;width:auto}
+.fsoc{display:flex;gap:10px}.fsoc a{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--fg);transition:.25s}.fsoc a:hover,.fsoc a:focus-visible{background:var(--acc);border-color:var(--acc)}
+footer h4{font:500 .7rem var(--b);letter-spacing:.22em;text-transform:uppercase;color:var(--acc2);margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:9px;padding:0;margin:0}
+footer address{line-height:1.9}
+footer li a,footer address a{color:var(--fg);opacity:.8;transition:opacity .2s}footer li a:hover,footer address a:hover{opacity:1;color:var(--acc2)}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;max-width:1200px;margin:44px auto 0;padding-top:20px;border-top:1px solid var(--line);font-size:.78rem}
+.fbot a{color:var(--mut)}.fbot a:hover{color:var(--acc2)}
+.by a{color:var(--fg);border-bottom:1px solid var(--acc)}
+@media(max-width:900px){.fgrid{grid-template-columns:1fr 1fr}.fb{grid-column:1/-1}}
+@media(max-width:520px){.fgrid{grid-template-columns:1fr}footer{padding-top:44px}.fbot{flex-direction:column}}
 #bar{display:none}
 @media(max-width:800px){
 #wa{display:none}
@@ -1064,7 +1092,8 @@ footer{padding-bottom:110px}
 <noscript><style>body.loading{overflow:visible}#intro{display:none}</style></noscript>
 </head>
 <body class="loading">
-<div id="intro" aria-hidden="true"><svg class="ay" viewBox="0 0 100 100" width="92" height="92"><circle class="orr" cx="50" cy="50" r="46"/><circle class="pr0" cx="50" cy="50" r="44"/><circle class="dt" cx="91.0" cy="50.0" r="1.4" style="animation-delay:0.20s"/><circle class="dt" cx="85.5" cy="70.5" r="1.4" style="animation-delay:0.27s"/><circle class="dt" cx="70.5" cy="85.5" r="1.4" style="animation-delay:0.34s"/><circle class="dt" cx="50.0" cy="91.0" r="1.4" style="animation-delay:0.41s"/><circle class="dt" cx="29.5" cy="85.5" r="1.4" style="animation-delay:0.48s"/><circle class="dt" cx="14.5" cy="70.5" r="1.4" style="animation-delay:0.55s"/><circle class="dt" cx="9.0" cy="50.0" r="1.4" style="animation-delay:0.62s"/><circle class="dt" cx="14.5" cy="29.5" r="1.4" style="animation-delay:0.69s"/><circle class="dt" cx="29.5" cy="14.5" r="1.4" style="animation-delay:0.76s"/><circle class="dt" cx="50.0" cy="9.0" r="1.4" style="animation-delay:0.83s"/><circle class="dt" cx="70.5" cy="14.5" r="1.4" style="animation-delay:0.90s"/><circle class="dt" cx="85.5" cy="29.5" r="1.4" style="animation-delay:0.97s"/><path style="animation-delay:0.30s,1.50s" d="M50 24C42 38 42 54 50 66C58 54 58 38 50 24Z"/><path style="animation-delay:0.47s,1.55s" d="M50 66C34 64 24 52 22 40C36 42 46 52 50 66Z"/><path style="animation-delay:0.64s,1.60s" d="M50 66C66 64 76 52 78 40C64 42 54 52 50 66Z"/><path style="animation-delay:0.81s,1.65s" d="M50 66C30 70 16 62 12 52C28 50 42 56 50 66Z"/><path style="animation-delay:0.98s,1.70s" d="M50 66C70 70 84 62 88 52C72 50 58 56 50 66Z"/><path style="animation-delay:1.15s,1.75s" d="M28 76Q50 86 72 76"/></svg>
+<a class="skip" href="#main">Skip to content</a>
+<div id="intro" aria-hidden="true"><img class="ay im" src="/assets/logo-mark.png" alt="" width="120" height="120" decoding="async">
 <div class="gr"><div class="g1">ආයුබෝවන්</div><div class="g2">Welcome</div><div class="g3">வணக்கம்</div></div><div class="ln"></div>
 <div class="n"><span style="animation-delay:1.2s">C</span><span style="animation-delay:1.32s">I</span><span style="animation-delay:1.44s">N</span><span style="animation-delay:1.56s">E</span><span style="animation-delay:1.68s">M</span><span style="animation-delay:1.8s">O</span><span style="animation-delay:1.92s">R</span><span style="animation-delay:2.04s">A</span></div>
 <div class="s">VIDEOGRAPHY SERVICE</div><div class="fl"></div><div class="pb"></div><div class="sk">TAP TO SKIP</div></div>
@@ -1080,7 +1109,7 @@ footer{padding-bottom:110px}
     <a href="/location" data-t="location">Location</a>
   </nav>
 </header>
-<main>
+<main id="main" tabindex="-1">
   <section id="home" class="on" aria-label="Cinemora Production">
     <div class="rec" aria-hidden="true"><i></i>REC · LIVE ON SET</div>
     <h1 class="hero" data-h1="home"><span class="tag">Wedding Cinematography &amp; Videography · Sri Lanka</span><span class="big" id="big" aria-hidden="true">CINEMORA</span><span class="vh">Cinemora Production</span></h1>
@@ -1099,8 +1128,9 @@ footer{padding-bottom:110px}
     <div class="scn"><div class="tag">Our work</div><h2>Watch Our Films</h2><p class="sub">Real films we’ve shot for real people, watched by thousands on Facebook. Tap any film to watch it.</p>
       <div class="works"><a class="wk" href="https://www.facebook.com/reel/982675031117422/" target="_blank" rel="noopener noreferrer" aria-label="Watch BMW S1000RR on Facebook (12K views)"><img src="/assets/work/bmw.jpg" alt="Still from BMW S1000RR, filmed by Cinemora Production" width="432" height="768" loading="lazy" decoding="async"><span class="wp" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="wi"><em>Commercial</em><b>BMW S1000RR</b><small>12K views on Facebook</small></span></a><a class="wk" href="https://www.facebook.com/reel/1079789437947622/" target="_blank" rel="noopener noreferrer" aria-label="Watch An engagement story on Facebook (4.4K views)"><img src="/assets/work/engagement.jpg" alt="Still from An engagement story, filmed by Cinemora Production" width="432" height="768" loading="lazy" decoding="async"><span class="wp" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="wi"><em>Wedding</em><b>An engagement story</b><small>4.4K views on Facebook</small></span></a><a class="wk" href="https://www.facebook.com/reel/996662083465199/" target="_blank" rel="noopener noreferrer" aria-label="Watch A midnight birthday surprise on Facebook (4.1K views)"><img src="/assets/work/surprise.jpg" alt="Still from A midnight birthday surprise, filmed by Cinemora Production" width="432" height="768" loading="lazy" decoding="async"><span class="wp" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="wi"><em>Event</em><b>A midnight birthday surprise</b><small>4.1K views on Facebook</small></span></a><a class="wk" href="https://www.facebook.com/reel/1407479184326211/" target="_blank" rel="noopener noreferrer" aria-label="Watch Morning at the old bridge on Facebook (2K views)"><img src="/assets/work/bridge.jpg" alt="Still from Morning at the old bridge, filmed by Cinemora Production" width="432" height="768" loading="lazy" decoding="async"><span class="wp" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span><span class="wi"><em>Cinematic</em><b>Morning at the old bridge</b><small>2K views on Facebook</small></span></a></div>
       <div class="btns"><a class="cta ghost" href="https://www.facebook.com/CinemoraProduction/reels/" target="_blank" rel="noopener noreferrer">See all films on Facebook ↗</a><a class="cta ghost" href="https://www.tiktok.com/@cinemora.production" target="_blank" rel="noopener noreferrer">TikTok ↗</a></div>
-      <p class="proof"><b>7.2K+</b> followers on Facebook &nbsp;·&nbsp; <b>100%</b> of reviewers recommend us</p>
+      <p class="proof"><b>7.2K+</b> followers on Facebook &nbsp;·&nbsp; <a class="l" href="https://www.facebook.com/CinemoraProduction/reviews" target="_blank" rel="noopener noreferrer"><b>100%</b> of reviewers recommend us ↗</a></p>
     </div>
+    <div class="scn"><div class="tag">How it works</div><h2>Simple from the first call</h2><div class="grid"><div class="card"><div class="stp">01</div><h3>Tell us about your day</h3><p class="sub" style="margin:8px 0 0;font-size:.92rem">Call, WhatsApp or send a quotation request with your date and what you need.</p></div><div class="card"><div class="stp">02</div><h3>Confirm your booking</h3><p class="sub" style="margin:8px 0 0;font-size:.92rem">A 40% advance payment confirms your date and your package.</p></div><div class="card"><div class="stp">03</div><h3>We film and deliver</h3><p class="sub" style="margin:8px 0 0;font-size:.92rem">We shoot and edit your film, then deliver it digitally once the agreed payment is complete.</p></div></div><div class="btns"><button type="button" class="cta" data-quote>Request a Quotation</button><a class="cta ghost" href="tel:+94703770730">Call 070 377 0730</a></div></div>
     <div class="scn"><div class="tag">By the numbers</div><div class="grid"><div class="card"><div class="num" data-to="5">5+</div><p class="sub" style="margin:6px 0 0">Years of experience</p></div><div class="card"><div class="num" data-to="200">200+</div><p class="sub" style="margin:6px 0 0">Projects filmed</p></div><div class="card"><div class="num" data-to="150">150+</div><p class="sub" style="margin:6px 0 0">Happy clients</p></div></div></div>
     <div class="scn" style="align-items:center;text-align:center"><h2 style="font-size:clamp(2rem,6vw,4.2rem)">Let’s make your film.</h2><p class="sub" style="margin:18px auto 28px">Tell us about your day or project and we’ll take care of the rest.</p><div class="btns" style="justify-content:center"><button type="button" class="cta" data-quote>Request a Quotation</button><a class="cta ghost" href="tel:+94703770730">Call 070 377 0730</a></div></div>
   </section>
@@ -1181,11 +1211,12 @@ footer{padding-bottom:110px}
         <li>Custom quotations are available for large-scale productions.</li>
         <li>Final pricing depends on the project requirements and production complexity.</li>
       </ul><div class="btns"><button type="button" class="cta" id="qgen">Request a Custom Quotation</button></div></div></div>
+    <div class="cat" style="margin-top:56px" id="faq"><div class="cathead"><div class="tag">Questions</div><h3>Frequently Asked Questions</h3></div><div class="faqs"><details class="card fq"><summary>How do I book Cinemora Production?</summary><p>Call 070 377 0730 or 074 350 0507, message us on WhatsApp, or send a quotation request from this website. A 40% advance payment confirms your booking.</p></details><details class="card fq"><summary>Are the prices fixed?</summary><p>The prices shown are starting prices in Sri Lankan Rupees. The final price depends on your project requirements and production complexity, so we are happy to prepare a custom quotation.</p></details><details class="card fq"><summary>Do you work outside Balapitiya?</summary><p>Yes. We film weddings, events and commercials across Sri Lanka. Transportation and accommodation expenses may apply depending on the location.</p></details><details class="card fq"><summary>Do you offer both photography and videography?</summary><p>Yes. Wedding packages are cinematic videography. Event, corporate, product and portrait packages include photography, videography or both, as listed in each package.</p></details><details class="card fq"><summary>Can you film with a drone?</summary><p>Yes. Drone footage is included in the Luxury wedding package and can be added to other bookings from Rs. 15,000. Drone coverage depends on weather conditions and location permissions.</p></details><details class="card fq"><summary>How will I receive my film?</summary><p>Your finished film is delivered digitally. The remaining payment is completed according to the agreed schedule before final delivery.</p></details><details class="card fq"><summary>What if I need more hours or changes?</summary><p>Additional shooting hours are charged separately, and revisions are limited according to the agreed package. Tell us what you need up front and we will recommend the right package.</p></details><details class="card fq"><summary>Can I visit you?</summary><p>Please call or message before visiting. We are based in Pathegama, Balapitiya, near Ahungalla Police Station.</p></details></div><div class="btns"><a class="cta ghost" href="https://wa.me/message/E7ERP73DCK3QJ1" target="_blank" rel="noopener noreferrer">Ask us on WhatsApp</a><a class="cta ghost" href="tel:+94703770730">Call 070 377 0730</a></div></div>
   </section>
 
   <section id="contact" aria-labelledby="contact-h">
     <div class="tag">Get in touch</div><h2 id="contact-h" data-h1="contact">Contact Details</h2>
-    <p class="sub" style="margin:10px 0 0">Call, WhatsApp or email us to check your date. We usually reply the same day.</p>
+    <p class="sub" style="margin:10px 0 0">Call, WhatsApp or email us to check your date. We reply to every enquiry personally.</p>
     <div class="card" style="max-width:600px;margin-top:24px">
       <div class="row"><b>Phone</b><span><a class="l" href="tel:+94703770730">070 377 0730</a> &nbsp;|&nbsp; <a class="l" href="tel:+94743500507">074 350 0507</a></span></div>
       <div class="row"><b>Email</b><a class="l" href="mailto:cinemoraproductionlk@gmail.com">cinemoraproductionlk@gmail.com</a></div>
@@ -1234,10 +1265,36 @@ footer{padding-bottom:110px}
       <div class="mapart" aria-hidden="true"><svg viewBox="0 0 300 220"><g class="gl"><path d="M0 60H300M0 110H300M0 160H300M60 0V220M120 0V220M180 0V220M240 0V220"/></g><path class="rd" d="M0 170C70 150 90 90 160 100S260 60 300 30"/><path class="rd" d="M110 220C120 170 150 140 160 100"/><g class="pin"><circle class="pr" cx="160" cy="100" r="8"/><circle class="pr p2" cx="160" cy="100" r="8"/><path d="M160 66C148 66 140 75 140 86C140 100 160 118 160 118C160 118 180 100 180 86C180 75 172 66 160 66Z" fill="#c2294d"/><circle cx="160" cy="86" r="6" fill="#fff"/></g></svg><span>Balapitiya</span></div>
     </div>
   </section>
+  <section id="privacy" aria-labelledby="privacy-h">
+    <div class="tag">Legal</div><h2 id="privacy-h" data-h1="privacy">Privacy Policy</h2>
+    <div class="card legal">
+      <p class="sub">Last updated: 15 November 2026</p>
+      <h3>What we collect</h3>
+      <p>This website does not have accounts, does not use advertising or tracking cookies, and does not store what you type. When you use the quotation form, the details you enter (name, email, phone number, event date, category, location and notes) are placed into a WhatsApp message or an email on your own device. Nothing is sent until you press Send there.</p>
+      <h3>How we use it</h3>
+      <p>Cinemora Production uses the details you send us only to reply to your enquiry, prepare a quotation and arrange your booking. We do not sell your details or share them for marketing.</p>
+      <h3>Third-party services</h3>
+      <p>This site loads fonts from Google Fonts and an animation library from cdnjs. Our hosting provider, Cloudflare, may keep standard technical logs such as IP address and browser type. Links to WhatsApp, Google Maps, Facebook, Instagram and TikTok take you to services with their own privacy policies. The site stores a single note in your browser, for the length of your visit, so the welcome intro only plays once.</p>
+      <h3>Your choices</h3>
+      <p>To ask what we hold about you, or to have it deleted, call <a class="l" href="tel:+94703770730">070 377 0730</a> or email <a class="l" href="mailto:cinemoraproductionlk@gmail.com">cinemoraproductionlk@gmail.com</a>.</p>
+      <h3>Photos and films</h3>
+      <p>Photos and films of your event are used only as agreed with you. If you would like your work to stay private, tell us when you book.</p>
+    </div>
+  </section>
 </main>
 <footer>
-  <address>Cinemora Production · Near Ahungalla Police Station, Pathegama, Balapitiya, Sri Lanka<br><a href="tel:+94703770730">070 377 0730</a> · <a href="tel:+94743500507">074 350 0507</a> · <a href="mailto:cinemoraproductionlk@gmail.com">cinemoraproductionlk@gmail.com</a></address>
-  © 2026 Cinemora Production. All rights reserved.
+  <div class="fgrid">
+    <div class="fb">
+      <a class="flogo" href="/" data-go="home" aria-label="Cinemora Production home"><img src="/assets/logo-mark.png" alt="" width="56" height="56" loading="lazy" decoding="async"><img src="/assets/logo.png" alt="Cinemora Production" width="640" height="119" loading="lazy" decoding="async"></a>
+      <p>Cinematic wedding films, events, commercials and music videos from Balapitiya, Sri Lanka.</p>
+      <div class="fsoc"><a href="https://www.instagram.com/cinemora.production/" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Production on Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/CinemoraProduction/" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Production on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8z"/></svg></a><a href="https://www.tiktok.com/@cinemora.production" target="_blank" rel="noopener noreferrer" aria-label="Cinemora Production on TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.2v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.6a5.8 5.8 0 1 0 5 5.7V9a7.5 7.5 0 0 0 4.3 1.4V7.2a4.3 4.3 0 0 1-3.2-1.4z"/></svg></a></div>
+    </div>
+    <div role="navigation" aria-label="Footer"><h4>Explore</h4><ul>
+      <li><a href="/" data-go="home">Home</a></li><li><a href="/prices" data-go="prices">Pricing &amp; Packages</a></li><li><a href="/contact" data-go="contact">Contact</a></li><li><a href="/social" data-go="social">Social Media</a></li><li><a href="/founder" data-go="founder">Meet the Founder</a></li><li><a href="/location" data-go="location">Location</a></li></ul></div>
+    <div><h4>Contact</h4><address><a href="tel:+94703770730">070 377 0730</a><br><a href="tel:+94743500507">074 350 0507</a><br><a href="mailto:cinemoraproductionlk@gmail.com">cinemoraproductionlk@gmail.com</a><br><a href="https://wa.me/message/E7ERP73DCK3QJ1" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></address></div>
+    <div><h4>Find us</h4><address>Near Ahungalla Police Station,<br>Pathegama, Balapitiya,<br>Sri Lanka 80550<br><a href="/location" data-go="location">Directions &amp; map</a></address></div>
+  </div>
+  <div class="fbot"><span>© 2026 Cinemora Production. All rights reserved.</span><a href="/privacy" data-go="privacy">Privacy Policy</a><span class="by">Website by <a href="https://getminutepage.com" target="_blank" rel="noopener">Minutepage</a></span></div>
 </footer>
 <div id="qm" role="dialog" aria-modal="true" aria-labelledby="qt" hidden><div class="qbox"><button type="button" class="qx" id="qx" aria-label="Close">&times;</button>
 <h3 id="qt">Request a Quotation</h3><p class="sub" style="margin:8px 0 18px;font-size:.85rem">Fill in your details. Your enquiry opens in WhatsApp or your email app, ready to send to Cinemora Production. We reply personally.</p>
@@ -1258,7 +1315,7 @@ footer{padding-bottom:110px}
 <script>
 (function(){
   'use strict';
-  var PATHS={home:'/',prices:'/prices',contact:'/contact',social:'/social',founder:'/founder',location:'/location'};
+  var PATHS={home:'/',prices:'/prices',contact:'/contact',social:'/social',founder:'/founder',location:'/location',privacy:'/privacy'};
   var META={};try{META=JSON.parse(document.getElementById('route-meta').textContent)}catch(e){}
   var cur=document.documentElement.getAttribute('data-route')||'home',sc=0,scn=0;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;

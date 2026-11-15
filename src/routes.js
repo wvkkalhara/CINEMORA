@@ -63,6 +63,15 @@ export const ROUTES = {
     changefreq: 'monthly',
     crumb: 'Social Media',
   },
+  privacy: {
+    path: '/privacy',
+    title: 'Privacy Policy | Cinemora Production',
+    description:
+      'How Cinemora Production handles the details you share when you call, message or send a quotation request through this website.',
+    priority: '0.3',
+    changefreq: 'yearly',
+    crumb: 'Privacy Policy',
+  },
 };
 
 export const PATH_TO_ROUTE = Object.fromEntries(

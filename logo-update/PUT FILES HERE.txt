@@ -1,0 +1,2 @@
+Extract cinemora-logo-files.zip from the Logo Editor into this folder (the 5 files directly inside),
+then run:  npm run logo

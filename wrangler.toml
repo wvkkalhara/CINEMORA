@@ -27,7 +27,7 @@ not_found_handling = "none"
 [vars]
 CANONICAL_HOST = "cinemoraproduction.com"
 # Update this date whenever you change the site content (used for <lastmod> in sitemap.xml).
-SITE_LASTMOD = "2026-11-15"
+SITE_LASTMOD = "2026-11-16"
 
 [observability]
 enabled = true

@@ -3,7 +3,7 @@
 import { SITE, ROUTES } from './routes.js';
 
 const PAGE_IMAGES = {
-  home: ['/assets/og-image.jpg', '/assets/logo-full.png'],
+  home: ['/assets/og-image-v3.jpg', '/assets/logo-full-v3.png'],
   founder: ['/assets/founder.jpg'],
 };
 

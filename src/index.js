@@ -153,7 +153,7 @@ async function renderPage(key, request, env, local) {
 }
 
 function notFound(request, local) {
-  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0a0507"><title>Page not found | Cinemora Production</title><style>html,body{height:100%;margin:0}body{display:flex;align-items:center;justify-content:center;background:#0a0507;color:#f4ece9;font:300 16px/1.6 "Helvetica Neue",Arial,sans-serif;text-align:center;padding:24px;box-sizing:border-box}h1{font-weight:700;font-size:clamp(2rem,8vw,4rem);margin:0 0 8px;color:#e0627f}a{display:inline-block;margin-top:18px;background:#c2294d;color:#fff;text-decoration:none;padding:13px 28px;border-radius:30px;letter-spacing:.1em}</style></head><body><main><img src="/assets/logo-mark.png" alt="" width="96" height="96" style="border-radius:50%;margin-bottom:16px"><h1>404</h1><p>This scene didn’t make the final cut.</p><a href="/">Back to Cinemora Production</a></main></body></html>`;
+  const html = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0a0507"><title>Page not found | Cinemora Production</title><style>html,body{height:100%;margin:0}body{display:flex;align-items:center;justify-content:center;background:#0a0507;color:#f4ece9;font:300 16px/1.6 "Helvetica Neue",Arial,sans-serif;text-align:center;padding:24px;box-sizing:border-box}h1{font-weight:700;font-size:clamp(2rem,8vw,4rem);margin:0 0 8px;color:#e0627f}a{display:inline-block;margin-top:18px;background:#c2294d;color:#fff;text-decoration:none;padding:13px 28px;border-radius:30px;letter-spacing:.1em}</style></head><body><main><img src="/assets/mark-v4.png" alt="" width="96" height="96" style="border-radius:50%;margin-bottom:16px"><h1>404</h1><p>This scene didn’t make the final cut.</p><a href="/">Back to Cinemora Production</a></main></body></html>`;
   return secure(new Response(request.method === 'HEAD' ? null : html, {
     status: 404,
     headers: {
@@ -186,11 +186,11 @@ function text(body, type, request, local) {
 function pageCsp(nonce, local) {
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://cdnjs.cloudflare.com`,
+    `script-src 'self' 'nonce-${nonce}' https://cdnjs.cloudflare.com https://static.cloudflareinsights.com`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data:",
-    "connect-src 'self'",
+    "connect-src 'self' https://cloudflareinsights.com",
     "manifest-src 'self'",
     "media-src 'self'",
     "worker-src 'none'",

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "sitemap": "node scripts/build-sitemap.mjs",
+    "logo": "node scripts/update-logo.mjs",
     "predeploy": "node scripts/build-sitemap.mjs",
     "deploy": "wrangler deploy"
   },
